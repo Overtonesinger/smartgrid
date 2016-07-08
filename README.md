@@ -1,6 +1,6 @@
-# react-boilerplate - Boilerplate for "SurviveJS - React"
+# smartgrid
+Datagrid Demo
 
-See [SurviveJS - React](http://survivejs.com/react/introduction/) for the book.
 
 ## Getting Started
 
