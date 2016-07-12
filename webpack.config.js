@@ -32,14 +32,14 @@ const common = merge(
       // E.g., '/kanban-demo/'. Webpack will alter asset paths
       // based on this. You can even use an absolute path here
       // or even point to a CDN.
-      //publicPath: '/datagrid/'
+      //publicPath: '/smartgrid/'
     },
     resolve: {
       extensions: ['', '.js', '.jsx']
     }
   },
   parts.indexTemplate({
-    title: 'Datagrid demo',
+    title: 'Smartgrid - React DataGrid demo',
     appMountId: 'app'
   }),
   parts.loadJSX(PATHS.app),

@@ -1,24 +1,13 @@
 import React from 'react';
-import Note from './Note';
-import Editable from './Editable';
-import LaneActions from '../actions/LaneActions';
+import Grid from './Grid';
 
 export default ({
-	notes,
-	onNoteClick=() => {}, onEdit=() => {}, onDelete=() => {}
+	grids
 	}) => (
 
-	<ul className="notes">{notes.map(({id, editing, task}) =>
+	<ul className="grids">{grids.map(({id}) =>
 		<li key={id}>
-			<Note className="note" id={id}
-					editing={editing}
-					onClick={onNoteClick.bind(null, id)}
-					onMove={LaneActions.move}>
-				<Editable editing={editing} value={task} onEdit={onEdit.bind(null, id)} />
-				<button
-					className="delete"
-					onClick={onDelete.bind(null, id)}>x</button>
-			</Note>
+			<Grid className="grid" id={id} />
 		</li>
 	)}</ul>
 )

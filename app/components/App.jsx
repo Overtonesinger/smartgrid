@@ -6,20 +6,33 @@ import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
 import connect from '../libs/connect';
+import Lanes from './Lanes';
+import LaneActions from '../actions/LaneActions';
 
 
-const App = ({grids}) => {
+const App = ({LaneActions, lanes}) => {
+	const addLane = () => {
+		LaneActions.create({
+			id: uuid.v4(),
+			name: 'New lane'
+		});
+	};
 
 	return (
 		<div>
-			<Grids grids={grids} />
+			<button className="add-lane" onClick={addLane}>+</button>
+			<Lanes lanes={lanes} />
 		</div>
 	);
 };
 /* ------------wrong syntax-highlight STOPPER!------------- */
 
 
-export default connect({grids}) => ({
-    grids
+export default compose(
+  DragDropContext(HTML5Backend),
+  connect(({lanes}) => ({
+    lanes
+  }), {
+    LaneActions
   })
-(App)
+)(App)
