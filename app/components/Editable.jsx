@@ -1,6 +1,7 @@
 import React from 'react';
 import Base from './BaseComponent';  // this._bind() ....... the "mass-binder"
 import classnames from 'classnames';
+import log from '../decorators/log';
 
 
 export default ({editing, value, onEdit, className, ...props}) => {
@@ -23,7 +24,7 @@ export default ({editing, value, onEdit, className, ...props}) => {
 
 class Edit extends Base {
 	render() {
-		const {className, value, ...props} = this.props;
+		const {className, value, onEdit, ...props} = this.props;
 
 		return <input
 			type="text"
@@ -43,6 +44,7 @@ class Edit extends Base {
 		}
 	}
 
+	@log
 	finishEdit = (e) => {
 		const value = e.target.value;
 

@@ -117,3 +117,14 @@ body {
 .note:hover .delete {
 	visibility: visible;
 }
+
+
+
+/* DataGrid styles... */
+
+.pointer {
+    cursor: pointer;
+}
+.datagrid-column {
+    color: #7d7d7d;
+}

@@ -2,7 +2,11 @@
   "presets": [
     "es2015",
     "react",
-    "survivejs-kanban"
+    "survivejs-kanban",
+    "stage-1"
+  ],
+  "plugins": [
+    "transform-decorators-legacy"
   ],
   "env": {
     "start": {
