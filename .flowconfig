@@ -1,0 +1,8 @@
+[include]
+./app/utils/
+
+[ignore]
+.*/node_modules/.*
+
+[libs]
+interfaces/

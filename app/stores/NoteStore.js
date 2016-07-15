@@ -29,4 +29,8 @@ export default class NoteStore {
 			notes: this.notes.filter(note => note.id !== id)
 		});
 	}
+
+	//getState() {
+	//	return this.state;
+	//}
 }

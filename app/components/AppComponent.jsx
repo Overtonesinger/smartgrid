@@ -17,7 +17,7 @@ export default ({LaneActions, lanes, ...props}) => {
 @connect(NoteStore)
 class AppComponent extends React.Component {
 	render() {
-		const {LaneActions, lanes, ...props} = this.props;
+		const {LaneActions, lanes, ...props} = this.props;  // destructuring assignment which consumes some of the props, before passing ONLY the remaining props down the line (to children).  /// React doc.: https://facebook.github.io/react/docs/transferring-props.html
 
 		return <div>
 				<button

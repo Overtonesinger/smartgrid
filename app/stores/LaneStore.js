@@ -1,3 +1,5 @@
+/* @flow */
+
 import update from 'react-addons-update';
 import LaneActions from '../actions/LaneActions';
 
@@ -61,8 +63,8 @@ move({sourceId, targetId}) {
 		const lanes = this.lanes;
 		const sourceLane = lanes.filter(lane => lane.notes.includes(sourceId))[0];
 		const targetLane = lanes.filter(lane => lane.notes.includes(targetId))[0];
-		const sourceNoteIndex = sourceLane.notes.indexOf(sourceId);
-		const targetNoteIndex = targetLane.notes.indexOf(targetId);
+		const sourceNoteIndex: number = sourceLane.notes.indexOf(sourceId);
+		const targetNoteIndex: number = targetLane.notes.indexOf(targetId);
 
 		if(sourceLane === targetLane) {
 			// move at once to avoid complications
