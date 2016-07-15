@@ -1,19 +1,13 @@
-/* @flow */
-
 import React from 'react';
-import NoteStore from '../stores/NoteStore';
-import AppComponent from '../components/AppComponent';
+// import NoteStore from '../stores/NoteStore';
 
-
-const connect = (TargetComponent: AppComponent, store: NoteStore) => {
+const connect = (TargetComponent, store) => {
 	return class Connect extends React.Component {
 		constructor(props) {
 			super(props);
 
 			this.storeChanged = this.storeChanged.bind(this);
-
-			if (typeof store === 'function') this.state = store(props).value;
-			else { this.state = store.getState(); }
+			this.state = store.getState();
 
 			store.listen(this.storeChanged);
 		}

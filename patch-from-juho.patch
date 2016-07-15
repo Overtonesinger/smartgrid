@@ -1,0 +1,49 @@
+diff --git a/app/decorators/connect.js b/app/decorators/connect.js
+index bef43ae..4f8b1be 100644
+--- a/app/decorators/connect.js
++++ b/app/decorators/connect.js
+@@ -2,19 +2,26 @@ import React from 'react';
+ // import store from '../stores/NoteStore';
+ 
+ const connect = (TargetComponent, store) => {
+-	return class Connect extends React.Component {
+-		constructor(props) {
+-			super(props);
++	class Connect extends React.Component {
++		constructor(props, context) {
++			super(props, context);
+ 
++			const {flux} = context;
++
++			// XXX: it would be better to match using name so just pass a string
++			// now i have to dig it and this will break in some browsers
++			const fluxStore = flux.stores[store.name];
++
++			this.fluxStore = fluxStore;
+ 			this.storeChanged = this.storeChanged.bind(this);
+-			this.state = store.getState();
++			this.state = fluxStore.getState();
+ 
+-			store.listen(this.storeChanged);
++			fluxStore.listen(this.storeChanged);
+ 		}
+ 
+ 		componentWillUnmount() {
+ 			super.componentWillUnmount();
+-			store.unlisten(this.storeChanged);
++			this.fluxStore.unlisten(this.storeChanged);
+ 		}
+ 		storeChanged() {
+ 			this.setState(store.getState());
+@@ -23,7 +30,12 @@ const connect = (TargetComponent, store) => {
+ 		render() {
+ 			return <TargetComponent {...this.props} {...this.state} />;
+ 		}
++	}
++	Connect.contextTypes = {
++		flux: React.PropTypes.object.isRequired
+ 	};
++
++	return Connect;
+ };
+ /*----WORKAROUND wrong syntax-highlight STOPPER----*/
