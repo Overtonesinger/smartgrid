@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _class;
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
@@ -57,7 +55,10 @@ exports.default = function (_ref) {
 };
 /*---WORKAROUND wrong syntax-highlight STOPPER---*/
 
-var AppComponent = (_dec = (0, _connect2.default)(_NoteStore2.default), _dec(_class = function (_React$Component) {
+//@connect(NoteStore)
+
+
+var AppComponent = function (_React$Component) {
 	_inherits(AppComponent, _React$Component);
 
 	function AppComponent() {
@@ -69,11 +70,13 @@ var AppComponent = (_dec = (0, _connect2.default)(_NoteStore2.default), _dec(_cl
 	_createClass(AppComponent, [{
 		key: 'render',
 		value: function render() {
+			// destructuring assignment which consumes some of the props, before passing ONLY the remaining
+			// props down the tree. Doc: https://facebook.github.io/react/docs/transferring-props.html
 			var _props = this.props;
 			var LaneActions = _props.LaneActions;
 			var lanes = _props.lanes;
 
-			var props = _objectWithoutProperties(_props, ['LaneActions', 'lanes']); // destructuring assignment which consumes some of the props, before passing ONLY the remaining props down the line (to children).  /// React doc.: https://facebook.github.io/react/docs/transferring-props.html
+			var props = _objectWithoutProperties(_props, ['LaneActions', 'lanes']);
 
 			return _react2.default.createElement(
 				'div',
@@ -107,4 +110,4 @@ var AppComponent = (_dec = (0, _connect2.default)(_NoteStore2.default), _dec(_cl
 	}]);
 
 	return AppComponent;
-}(_react2.default.Component)) || _class);
+}(_react2.default.Component);

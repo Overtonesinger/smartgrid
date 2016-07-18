@@ -14,10 +14,12 @@ export default ({LaneActions, lanes, ...props}) => {
 }
 /*---WORKAROUND wrong syntax-highlight STOPPER---*/
 
-@connect(NoteStore)
+//@connect(NoteStore)
 class AppComponent extends React.Component {
 	render() {
-		const {LaneActions, lanes, ...props} = this.props;  // destructuring assignment which consumes some of the props, before passing ONLY the remaining props down the line (to children).  /// React doc.: https://facebook.github.io/react/docs/transferring-props.html
+		// destructuring assignment which consumes some of the props, before passing ONLY the remaining
+		// props down the tree. Doc: https://facebook.github.io/react/docs/transferring-props.html
+		const {LaneActions, lanes, ...props} = this.props;
 
 		return <div>
 				<button

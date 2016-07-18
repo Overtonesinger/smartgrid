@@ -1,32 +1,44 @@
 import React from 'react';
 // import store from '../stores/NoteStore';
+		// +++ b/app/decorators/connect.js
 
 const connect = (TargetComponent, store) => {
-	return class Connect extends React.Component {
-		constructor(props) {
-			super(props);
+	class Connect extends React.Component {
+		constructor(props, context) {
+			super(props, context);
+ 
+			const {flux} = context;
 
+			// XXX: it would be better to match using name so just pass a string
+			// now i have to dig it and this will break in some browsers
+			const fluxStore = flux.stores[store.name];
+
+			this.fluxStore = fluxStore;
 			this.storeChanged = this.storeChanged.bind(this);
-			this.state = store.getState();
+			this.state = fluxStore.getState();
 
-			store.listen(this.storeChanged);
+			fluxStore.listen(this.storeChanged);
 		}
 
 		componentWillUnmount() {
 			super.componentWillUnmount();
-			store.unlisten(this.storeChanged);
+			this.fluxStore.unlisten(this.storeChanged);
 		}
+
 		storeChanged() {
-			this.setState(store.getState());
+			this.setState(this.fluxStore.getState());
 			console.log('storeChanged() connect-decor.!');
 		}
+
 		render() {
 			return <TargetComponent {...this.props} {...this.state} />;
 		}
-	};
-};
-/*----WORKAROUND wrong syntax-highlight STOPPER----*/
+		/*----WORKAROUND wrong syntax-highlight STOPPER----*/
 
-export default (store) => {
-	return (target) => connect(target, store);
+	}
+	Connect.contextTypes = {
+		flux: React.PropTypes.object.isRequired
+	};
+
+	return Connect;
 };
