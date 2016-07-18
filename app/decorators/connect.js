@@ -1,5 +1,5 @@
 import React from 'react';
-// import NoteStore from '../stores/NoteStore';
+// import store from '../stores/NoteStore';
 
 const connect = (TargetComponent, store) => {
 	return class Connect extends React.Component {
@@ -27,6 +27,6 @@ const connect = (TargetComponent, store) => {
 };
 /*----WORKAROUND wrong syntax-highlight STOPPER----*/
 
-export default (store: NoteStore) => {
-	return (target: AppComponent) => connect(target, store);
+export default (store) => {
+	return (target) => connect(target, store);
 };
