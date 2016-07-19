@@ -11,6 +11,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _uuid = require('uuid');
+
+var _uuid2 = _interopRequireDefault(_uuid);
+
 var _reactDatagrid = require('react-datagrid');
 
 var _reactDatagrid2 = _interopRequireDefault(_reactDatagrid);
@@ -26,10 +30,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DaTable = function (_React$Component) {
 	_inherits(DaTable, _React$Component);
 
-	function DaTable() {
+	function DaTable(props) {
 		_classCallCheck(this, DaTable);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(DaTable).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DaTable).call(this, props));
+
+		_this.props.id = _uuid2.default.v4();
+		return _this;
 	}
 
 	_createClass(DaTable, [{
@@ -37,7 +44,7 @@ var DaTable = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(_reactDatagrid2.default, { columns: this.props.columns,
 				dataSource: this.props.rows,
-				idProperty: 'id',
+				idProperty: this.props.id,
 				style: this.props.style });
 		}
 	}]);

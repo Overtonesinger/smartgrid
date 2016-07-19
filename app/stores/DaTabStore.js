@@ -1,11 +1,10 @@
-/* @flow */
-
 import update from 'react-addons-update';
-import LaneActions from '../actions/LaneActions';
+import DaTabActions from '../actions/DaTabActions';
 
-export default class LaneStore {
+
+export default class DaTabStore {
 	constructor() {
-		this.bindActions(LaneActions);
+		this.bindActions(DaTabActions);
 		this.lanes = [];
 	}
 
@@ -59,7 +58,7 @@ export default class LaneStore {
 		});
 	}
 
-move({sourceId, targetId}) {
+	move({sourceId, targetId}) {
 		const lanes = this.lanes;
 		const sourceLane = lanes.filter(lane => lane.notes.includes(sourceId))[0];
 		const targetLane = lanes.filter(lane => lane.notes.includes(targetId))[0];
