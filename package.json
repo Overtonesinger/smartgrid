@@ -66,13 +66,15 @@
     "classnames": "^2.2.5",
     "exenv": "^1.2.1",
     "flow": "^0.2.3",
-    "react": "^15.1.0",
+    "react": "^15.2.1",
     "react-addons-update": "^15.2.1",
+    "react-data-grid": "^1.0.18",
     "react-datagrid": "^2.1.1",
     "react-dnd": "^2.1.4",
     "react-dnd-html5-backend": "^2.1.2",
-    "react-dom": "^15.1.0",
+    "react-dom": "^15.2.1",
     "redux": "^3.5.2",
+    "ron-react-autocomplete": "^3.0.1",
     "standard-format": "^2.2.2",
     "underscore": "^1.8.3"
   }
