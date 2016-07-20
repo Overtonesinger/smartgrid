@@ -37,10 +37,7 @@ exports.default = function (state, actions) {
 };
 /*---WORKAROUND wrong syntax-highlight STOPPER---*/
 
-// Connect to Alt through context. This hasn't been optimized
-// at all. If Alt store changes, it will force render.
-//
-// See *AltContainer* and *connect-alt* for optimized solutions.
+// See AltContainer and connect-alt for optimized solutions.
 
 
 function connect() {
@@ -91,7 +88,7 @@ function connect() {
 				var stores = flux.stores;
 				var composedStores = composeStores(stores);
 
-				return _react2.default.createElement(target, _extends({}, _extends({}, this.props, state(composedStores), actions)));
+				return _react2.default.createElement(target, _extends({}, this.props, state(composedStores), actions));
 			}
 		}]);
 

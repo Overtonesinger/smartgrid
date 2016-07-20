@@ -1,44 +1,44 @@
-import React from 'react';
-// import store from '../stores/NoteStore';
-		// +++ b/app/decorators/connect.js
+import React from 'react'
+// import store from '../stores/NoteStore'
+// +++ b/app/decorators/connect.js
 
 const connect = (TargetComponent, store) => {
-	class Connect extends React.Component {
-		constructor(props, context) {
-			super(props, context);
- 
-			const {flux} = context;
+  class Connect extends React.Component {
+    constructor (props, context) {
+      super(props, context)
 
-			// XXX: it would be better to match using name so just pass a string
-			// now i have to dig it and this will break in some browsers
-			const fluxStore = flux.stores[store.name];
+      const {flux} = context
 
-			this.fluxStore = fluxStore;
-			this.storeChanged = this.storeChanged.bind(this);
-			this.state = fluxStore.getState();
+      // XXX: it would be better to match using name so just pass a string
+      // now i have to dig it and this will break in some browsers
+      const fluxStore = flux.stores[store.name]
 
-			fluxStore.listen(this.storeChanged);
-		}
+      this.fluxStore = fluxStore
+      this.storeChanged = this.storeChanged.bind(this)
+      this.state = fluxStore.getState()
 
-		componentWillUnmount() {
-			super.componentWillUnmount();
-			this.fluxStore.unlisten(this.storeChanged);
-		}
+      fluxStore.listen(this.storeChanged)
+    }
 
-		storeChanged() {
-			this.setState(this.fluxStore.getState());
-			console.log('storeChanged() connect-decor.!');
-		}
+    componentWillUnmount () {
+      super.componentWillUnmount()
+      this.fluxStore.unlisten(this.storeChanged)
+    }
 
-		render() {
-			return <TargetComponent {...this.props} {...this.state} />;
-		}
-		/*----WORKAROUND wrong syntax-highlight STOPPER----*/
+    storeChanged () {
+      this.setState(this.fluxStore.getState())
+      console.log('storeChanged() connect-decor.!')
+    }
 
-	}
-	Connect.contextTypes = {
-		flux: React.PropTypes.object.isRequired
-	};
+    render () {
+      return <TargetComponent {...this.props} {...this.state} />
+    }
+    /*----WORKAROUND wrong syntax-highlight STOPPER----*/
 
-	return Connect;
-};
+  }
+  Connect.contextTypes = {
+    flux: React.PropTypes.object.isRequired
+  }
+
+  return Connect
+}

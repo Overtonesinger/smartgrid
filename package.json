@@ -73,6 +73,7 @@
     "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^15.1.0",
     "redux": "^3.5.2",
+    "standard-format": "^2.2.2",
     "underscore": "^1.8.3"
   }
 }

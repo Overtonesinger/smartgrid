@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -f "$1" ]; then
+  standard-format -w "$i"
+else
+  echo "Chybny param 1: soubor neexistuje!"
+fi

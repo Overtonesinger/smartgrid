@@ -25,14 +25,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var pizzas = [{ title: 'Four cheese', vegetarian: true }, { title: 'Margherita', vegetarian: true }, { title: 'Pepperoni', vegetarian: false }, { title: 'Hawaiian', vegetarian: false }];
 
 function vegetarianPizzas() {
-	return _underscore2.default.findWhere(pizzas, { vegetarian: true });
+  return _underscore2.default.findWhere(pizzas, { vegetarian: true });
 }
 
 console.log('DEBUG TEST of library _ :');
-console.log(vegetarianPizzas()); // DEBUG and testing only!
+console.log(vegetarianPizzas());
 
 _reactDom2.default.render(_react2.default.createElement(
-	_Provider2.default,
-	null,
-	_react2.default.createElement(_App2.default, null)
+  _Provider2.default,
+  null,
+  _react2.default.createElement(_App2.default, null)
 ), document.getElementById('app'));

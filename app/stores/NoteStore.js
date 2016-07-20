@@ -1,36 +1,36 @@
-import NoteActions from '../actions/NoteActions';
+import NoteActions from '../actions/NoteActions'
 
 export default class NoteStore {
-	constructor() {
-		this.bindActions(NoteActions);
-		this.notes = [];
-	}
+  constructor () {
+    this.bindActions(NoteActions)
+    this.notes = []
+  }
 
-	create(note) {
-		this.setState({
-			notes: this.notes.concat(note)
-		});
-	}
+  create (note) {
+    this.setState({
+      notes: this.notes.concat(note)
+    })
+  }
 
-	update(updatedNote) {
-		this.setState({
-			notes: this.notes.map(note => {
-				if(note.id === updatedNote.id) {
-					return Object.assign({}, note, updatedNote);
-				}
+  update (updatedNote) {
+    this.setState({
+      notes: this.notes.map(note => {
+        if (note.id === updatedNote.id) {
+          return Object.assign({}, note, updatedNote)
+        }
 
-				return note;
-			})
-		});
-	}
+        return note
+      })
+    })
+  }
 
-	delete(id) {
-		this.setState({
-			notes: this.notes.filter(note => note.id !== id)
-		});
-	}
+  delete (id) {
+    this.setState({
+      notes: this.notes.filter(note => note.id !== id)
+    })
+  }
 
-	//getState() {
-	//	return this.state;
-	//}
+// getState() {
+//	return this.state
+// }
 }
