@@ -1,23 +1,21 @@
 import React from 'react'
-// import connect from '../decorators/connect'
 import ReactDataGrid from 'react-data-grid';
-//import ReactDataGridPlugins from 'react-data-grid/addons';
 
-class AppComponent1 extends React.Component {
+export default class AppGrid3 extends React.Component {
   constructor(props) {
     super(props);
 
     this._rows = [];
-    this.initRows(1000);
+    this.initRows(30);
 
     this.columns = [
       {
         key: 'id',
-        name: 'ID'
+        name: 'ID_G3'
       },
       {
         key: 'title',
-        name: 'Title'
+        name: 'Title_G3'
       },
       {
         key: 'count',
@@ -30,7 +28,7 @@ class AppComponent1 extends React.Component {
   }
 
   rowGetter(i) {
-    return this._rows[i];  //TODO: bind this!!!
+    return this._rows[i];
   }
 
   initRows(rows) {
@@ -44,11 +42,11 @@ class AppComponent1 extends React.Component {
   }
 
   render() {
-
     return <ReactDataGrid
       columns={this.columns}
       rowGetter={this.rowGetter}
       rowsCount={this._rows.length}
-      minHeight={500} />;
+      _rows={this._rows}
+      minHeight={172} />;
   }
 }
