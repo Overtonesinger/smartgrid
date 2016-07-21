@@ -5,6 +5,7 @@ export default class AppGrid5 extends React.Component {
   constructor(props) {
     super(props);
 
+    this.className = 'a5';
     this._rows = [];
     this.initRows(5);
 
@@ -47,6 +48,9 @@ export default class AppGrid5 extends React.Component {
       rowGetter={this.rowGetter}
       rowsCount={this._rows.length}
       _rows={this._rows}
-      minHeight={172} />;
+      minHeight={172}
+      className={this.className} />;
+
+    /* ---WORKAROUND wrong syntax-highlight STOPPER--- */
   }
 }

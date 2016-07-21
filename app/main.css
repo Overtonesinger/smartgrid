@@ -128,3 +128,19 @@ body {
 .datagrid-column {
     color: #7d7d7d;
 }
+
+.a1 {
+    background-color: #FFAAAA;
+}
+.a2 {
+    background-color: #AAFFAA;
+}
+.a3 {
+    background-color: #AEAEFF;
+}
+.a4 {
+    background-color: #FFFF50;  /* yellow */
+}
+.a5 {
+    background-color: #A0A0A0;  /* gray */
+}
