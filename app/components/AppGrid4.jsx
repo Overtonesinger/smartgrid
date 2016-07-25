@@ -5,24 +5,12 @@ export default class AppGrid4 extends React.Component {
   constructor(props) {
     super(props);
 
-    this.className = 'a4';
-    this._rows = [];
-    this.initRows(4);
+    const { rows, columns, ...rest } = props;
+    //this.props = ...rest;
 
-    this.columns = [
-      {
-        key: 'id',
-        name: 'ID_G4'
-      },
-      {
-        key: 'title',
-        name: 'Title_G4'
-      },
-      {
-        key: 'count',
-        name: 'Count'
-      }
-      ];
+    this.className = 'a4';
+    this._rows = rows;
+    this.columns = columns;
 
     //A rowGetter function is required by the grid to retrieve a row for a given index
     this.rowGetter = this.rowGetter.bind(this);
@@ -30,16 +18,6 @@ export default class AppGrid4 extends React.Component {
 
   rowGetter(i) {
     return this._rows[i];
-  }
-
-  initRows(rows) {
-    for (let i = 1; i < rows; i++) {
-      this._rows.push({
-        id: i,
-        title: 'Title ' + i,
-        count: i * 1000
-      });
-    }
   }
 
   render() {

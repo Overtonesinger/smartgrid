@@ -12,8 +12,10 @@ function vegetarianPizza () {
   return _.findWhere(pizzas, {vegetarian: true})
 }
 
-//console.log(vegetarianPizza())
-
+//Destructuring function arguments (ES2015)
+function Destructuring_F_Arguments({ text1, text2, text3 }) {
+  return String.concat(text1, text2, text3);
+}
 
 describe('add', function() {
   it('adds', function() {
